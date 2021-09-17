@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="wheelFragment"
+            type="com.operation3inc.thewheelycoolapp.view.WheelFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.operation3inc.thewheelycoolapp.viewmodel.OptionViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/top_app_bar"
+                style="@style/Widget.MaterialComponents.Toolbar.Surface"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:navigationIcon="@drawable/ic_close"
+                app:navigationIconTint="?attr/colorOnBackground" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.operation3inc.thewheelycoolapp.view.SpinWheel
+            android:id="@+id/wheel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="32dp"
+            android:padding="16dp"
+            android:rotation="90"
+            android:visibility="visible"
+            app:arrow_image="@drawable/ic_arrow"
+            app:background_color="?attr/colorPrimary"
+            app:image_padding="16dp"
+            app:layout_constraintBottom_toTopOf="@id/btn_spin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/app_bar_layout" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_spin"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:enabled="@{viewModel.selectedOptions.size() > 1 ? true : false}"
+            android:onClick="@{() -> wheelFragment.onBtnSpinClick()}"
+            android:text="@string/button_spin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wheel" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

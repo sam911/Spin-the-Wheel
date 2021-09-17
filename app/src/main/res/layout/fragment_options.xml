@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="optionsFragment"
+            type="com.operation3inc.thewheelycoolapp.view.OptionsFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.operation3inc.thewheelycoolapp.viewmodel.OptionViewModel" />
+
+        <variable
+            name="optionListAdapter"
+            type="com.operation3inc.thewheelycoolapp.view.OptionListAdapter" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_marginTop="72dp"
+            android:layout_marginBottom="128dp"
+            android:setAdapter="@{optionListAdapter}"
+            android:setOptionList="@{viewModel.allOptions}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="5"
+            tools:listitem="@layout/layout_option_item" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_done"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:enabled="@{viewModel.selectedOptions.size() > 1 ? true : false}"
+            android:onClick="@{() -> optionsFragment.onBtnDoneClick()}"
+            android:text="@string/button_done" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

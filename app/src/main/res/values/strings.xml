@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">The Wheely Cool App</string>
+
+    <!-- Buttons -->
+    <string name="button_done">Done</string>
+    <string name="button_spin">Spin</string>
+
+    <!-- Image description -->
+    <string name="image_arrow">Arrow</string>
+</resources>
